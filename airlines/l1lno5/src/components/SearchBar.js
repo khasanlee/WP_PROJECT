@@ -8,19 +8,24 @@ const SearchBar = ({ onSearch }) => {
         setSearchTerm(event.target.value);
     };
 
-    const handleSearch = () => {
+    const handleSearch = (event) => {
+        event.preventDefault()
         onSearch(searchTerm);
     };
 
     return (
         <div>
-            <input
-                type="text"
-                placeholder="Enter airline name"
-                value={searchTerm}
-                onChange={handleInputChange}
-            />
-            <button onClick={handleSearch}><i class="fa-solid fa-magnifying-glass"></i></button>
+            <form onsubmit={handleSearch}>
+                     <input
+                     type="text"
+                     placeholder="Enter airline name"
+                     value={searchTerm}
+                    onChange={handleInputChange}
+                     />
+                    <button type="submit" onClick={handleSearch}><i class="fa-solid fa-magnifying-glass"></i></button>
+                    
+            </form>
+             
         </div>
     );
 };
